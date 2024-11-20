@@ -10,7 +10,9 @@ const Home = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-4 max-lg:mt-10 gap-5">
         <Filter />
-        <List />
+        <div className="col-span-3">
+          <List />
+        </div>
       </div>
     </Container>
   );
