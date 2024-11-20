@@ -1,6 +1,6 @@
 type Props = {
-  children: JSX.Element | JSX.Element[];
-  design: string;
+  children?: JSX.Element | JSX.Element[];
+  design?: string;
 };
 const Container = ({ children, design }: Props) => {
   return (
