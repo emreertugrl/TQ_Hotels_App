@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Params } from "react-router-dom";
 
 // axios ayarları
 export const api = axios.create({
@@ -6,5 +7,5 @@ export const api = axios.create({
 });
 
 // bütün konaklam alanlarını getiren fn
-export const getPlaces = () =>
-  api.get("/api/places").then((res) => res.data.places);
+export const getPlaces = (params?: Params) =>
+  api.get("/api/places", { params }).then((res) => res.data.places);
