@@ -25,7 +25,7 @@ const List = () => {
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <Error />
+          <Error info={error} refetch={refetch} />
         ) : (
           <div className="grid gap-5 mt-5">
             {data?.map((place) => (
