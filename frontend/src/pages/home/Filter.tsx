@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router-dom";
 const Filter = () => {
   const [params, setParams] = useSearchParams();
   // api'dan otel verilerini al
-  const { data } = useQuery<Place[]>({
+  const { isPending, data } = useQuery<Place[]>({
     queryKey: ["places"],
     queryFn: () => getPlaces(),
   });
@@ -24,20 +24,24 @@ const Filter = () => {
     <form className="lg:mt-28 flex flex-col gap-4 lg:gap-20">
       <div className="field">
         <label htmlFor="">Nereye ? </label>
-        <select
-          className="input"
-          onChange={(e) => handleChange("location", e.target.value)}
-        >
-          <option value="">Seçiniz</option>
-          {locations?.map((i, key) => (
-            <option key={key}>{i}</option>
-          ))}
-        </select>
+        {!isPending && (
+          <select
+            defaultValue={params.get("location") || ""}
+            className="input"
+            onChange={(e) => handleChange("location", e.target.value)}
+          >
+            <option value="">Seçiniz</option>
+            {locations?.map((i, key) => (
+              <option key={key}>{i}</option>
+            ))}
+          </select>
+        )}
       </div>
 
       <div className="field">
         <label htmlFor="">Konaklama yerine göre ara</label>
         <input
+          defaultValue={params.get("title") || ""}
           onChange={(e) => handleChange("title", e.target.value)}
           type="text"
           className="input"
@@ -48,6 +52,7 @@ const Filter = () => {
       <div className="field">
         <label htmlFor="">Sıralama Ölçütü ? </label>
         <select
+          defaultValue={params.get("order") || ""}
           className="input"
           onChange={(e) => handleChange("order", e.target.value)}
         >
