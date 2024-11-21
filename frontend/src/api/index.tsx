@@ -13,3 +13,9 @@ export const getPlaces = (params?: Params) =>
 
 // yeni konaklama alanı oluştur
 export const createPlace = (body: PlaceData) => api.post("/api/places", body);
+// bir konaklama alanını al
+export const getPlace = (id: string) =>
+  api.get(`/api/place/${id}`).then((res) => res.data.place);
+
+// bir konaklama alanını sil
+export const deletePlace = (id: string) => api.delete(`/api/place/${id}`);
