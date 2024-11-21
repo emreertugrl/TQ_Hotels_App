@@ -27,7 +27,7 @@ const Card = ({ place }: { place: Place }) => {
               <span className="border p-1 rounded-md">{item}</span>
             ))}
           </div>
-          <Rating />
+          <Rating point={place.rating} />
         </div>
         <div className="flex flex-col items-end">
           <span className="text-2xl font-bold">{place.price_per_night} $</span>
