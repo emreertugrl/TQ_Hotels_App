@@ -4,7 +4,7 @@
 
 @layer components {
   .input {
-    @apply border py-1 px-4 rounded-md;
+    @apply border py-1 px-4 rounded-md shadow;
   }
   .field {
     @apply flex flex-col gap-2;
